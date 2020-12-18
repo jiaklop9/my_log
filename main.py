@@ -6,7 +6,7 @@ from logging.handlers import RotatingFileHandler
 
 
 class Logger:
-    def __init__(self, path, console_level=logging.DEBUG, file_level=logging.INFO):
+    def __init__(self, path, console_level=logging.DEBUG, file_level=logging.WARNING):
         self.logger = logging.getLogger(path)
         self.logger.setLevel(logging.DEBUG)
         fmt = logging.Formatter('[%(asctime)s] [%(levelname)s] [%(name)s] %(message)s', '%Y-%m-%d %H:%M:%S')
@@ -32,17 +32,17 @@ class Logger:
     def warning(self, message):
         self.logger.warning(message)
 
-    def error(self, message):
-        self.logger.error(message)
+    def error(self, message, *args, **kwargs):
+        self.logger.error(message, *args, **kwargs)
 
     def critical(self, message):
         self.logger.critical(message)
 
 
 if __name__ == '__main__':
-    logyyx = Logger('yyx.log', logging.ERROR, logging.WARNING)
+    logyyx = Logger('main', logging.ERROR, logging.WARNING)
     logyyx.debug('一个debug信息')
     logyyx.info('一个info信息')
-    logyyx.war('一个warning信息')
+    logyyx.warning('一个warning信息')
     logyyx.error('一个error信息')
-    logyyx.cri('一个致命critical信息')
+    logyyx.critical('一个致命critical信息')
