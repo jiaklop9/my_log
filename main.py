@@ -9,7 +9,7 @@ class Logger:
     def __init__(self, path, console_level=logging.DEBUG, file_level=logging.INFO):
         self.logger = logging.getLogger(path)
         self.logger.setLevel(logging.DEBUG)
-        fmt = logging.Formatter('[%(asctime)s] [%(levelname)s] [%(lineno)d] %(message)s', '%Y-%m-%d %H:%M:%S')
+        fmt = logging.Formatter('[%(asctime)s] [%(levelname)s] [%(name)s] %(message)s', '%Y-%m-%d %H:%M:%S')
         # 设置CMD日志
         sh = logging.StreamHandler()
         sh.setFormatter(fmt)
